@@ -12,6 +12,7 @@
         app:cardElevation="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:background="@drawable/message_background"
@@ -22,7 +23,7 @@
                 app:cardCornerRadius="10dp"
                 android:layout_margin="4dp"
                 android:layout_width="150dp"
-                android:layout_height="200dp">
+                android:layout_height="220dp">
 
                 <ImageView
                     android:scaleType="fitXY"
@@ -33,33 +34,30 @@
 
             </androidx.cardview.widget.CardView>
 
-
             <TextView
-
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/cardImage"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
                 android:layout_toEndOf="@id/cardImage"
                 android:ellipsize="end"
-                android:padding="8dp"
+                android:padding="4dp"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textReleaseYear"
+                android:id="@+id/Caption"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_below="@id/titleTextView"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="33dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
                 android:layout_toEndOf="@id/cardImage"
                 android:ellipsize="end"
-                android:padding="8dp"
+                android:padding="4dp"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
@@ -67,23 +65,34 @@
                 android:id="@+id/releaseDateTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_below="@id/textReleaseYear"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="33dp"
+                android:layout_below="@id/Caption"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
                 android:layout_toEndOf="@id/cardImage"
                 android:ellipsize="end"
-                android:padding="8dp"
+                android:padding="4dp"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/CaptionNew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/releaseDateTextView"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
+                android:layout_toEndOf="@id/cardImage"
+                android:ellipsize="end"
+                android:padding="4dp"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
 
             <View
                 android:id="@+id/textTitleType"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@+id/cardImage"
-                android:layout_marginTop="5dp"
+                android:layout_below="@+id/CaptionNew"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="5dp"
                 android:background="@android:color/black" />
         </RelativeLayout>

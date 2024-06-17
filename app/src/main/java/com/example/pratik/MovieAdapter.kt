@@ -35,16 +35,19 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val releaseDateTextView: TextView = itemView.findViewById(R.id.releaseDateTextView)
+        private val caption: TextView = itemView.findViewById(R.id.Caption)
+        private var captionNew: TextView? = itemView.findViewById(R.id.CaptionNew)
 
         fun bind(movie: Movie) {
             titleTextView.text = movie.titleText.text
             releaseDateTextView.text = "${movie.releaseDate.day}-${movie.releaseDate.month}-${movie.releaseDate.year}"
-
+            caption.text=movie.titleType.text
+            captionNew?.text=movie.primaryImage?.caption?.plainText
             movie.primaryImage?.url?.let {
                 Picasso.get()
                     .load(it)
-                    .resize(200, 300) // Resize the image to fit the view
-                    .centerCrop() // Crop the image to fill the view
+                    .resize(150, 220)
+                    .centerCrop()
                     .into(imageView)
             }
         }
