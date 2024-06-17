@@ -1,15 +1,18 @@
-package com.example.pratik
+package com.example.pratik.moviefetch
 
-
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pratik.R
+import com.example.pratik.activities.DetailActivity
 import com.squareup.picasso.Picasso
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(private val context: Context) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     private var movies: List<Movie> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -20,6 +23,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
         holder.bind(movie)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("MOVIE", movie)
+            }
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -36,13 +46,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val releaseDateTextView: TextView = itemView.findViewById(R.id.releaseDateTextView)
         private val caption: TextView = itemView.findViewById(R.id.Caption)
-        private var captionNew: TextView? = itemView.findViewById(R.id.CaptionNew)
+        private val captionNew: TextView? = itemView.findViewById(R.id.CaptionNew)
 
         fun bind(movie: Movie) {
             titleTextView.text = movie.titleText.text
             releaseDateTextView.text = "${movie.releaseDate.day}-${movie.releaseDate.month}-${movie.releaseDate.year}"
-            caption.text=movie.titleType.text
-            captionNew?.text=movie.primaryImage?.caption?.plainText
+            caption.text = movie.titleType.text
+            captionNew?.text = movie.primaryImage?.caption?.plainText
             movie.primaryImage?.url?.let {
                 Picasso.get()
                     .load(it)
@@ -50,6 +60,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
                     .centerCrop()
                     .into(imageView)
             }
+
         }
     }
 }

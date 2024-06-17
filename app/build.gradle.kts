@@ -7,6 +7,7 @@ android {
     namespace = "com.example.pratik"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.pratik"
         minSdk = 24

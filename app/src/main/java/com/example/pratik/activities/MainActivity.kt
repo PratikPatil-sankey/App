@@ -1,10 +1,14 @@
-package com.example.pratik
+package com.example.pratik.activities
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pratik.R
+import com.example.pratik.moviefetch.MovieAdapter
+import com.example.pratik.moviefetch.MovieResponse
+import com.example.pratik.retrofit.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        movieAdapter = MovieAdapter()
+        movieAdapter = MovieAdapter(this) // Pass context here
         recyclerView.adapter = movieAdapter
 
         fetchMovies()
